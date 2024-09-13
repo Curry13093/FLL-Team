@@ -11,8 +11,8 @@ hub.system.set_stop_button((Button.BLUETOOTH))
 
 
 # Robot configuration
-motorattachmentleft = Motor(Port.D)
-motorattachmentright = Motor(Port.F)
+motorattachmentleft = Motor(Port.F)
+motorattachmentright = Motor(Port.B)
 
 motordriveleft = Motor(Port.C, Direction.COUNTERCLOCKWISE)
 motordriveright = Motor(Port.E)
@@ -95,23 +95,25 @@ def run1() -> None:
     global runindex
 
     initrun(0)
-    
-   # motorattachmentleft.run_target(1000,-45)
-    drivebase.straight(705)
-    drivebase.turn(47)
-    drivebase.straight(500)
-    drivebase.straight(-50)
+
+    motorattachmentleft.run_angle(1000,-400)
+    drivebase.straight(695)
+    drivebase.turn(43)
     drivebase.straight(400)
-    drivebase.straight(-50)
-    drivebase.straight(400)
+    drivebase.straight(-100)
+    drivebase.straight(300)
     drivebase.straight(-300)
-    motorattachmentleft.run_target(1000,-650)
-    drivebase.turn(32)
-    drivebase.straight(100)
-    motorattachmentleft.run_target(1000, 1500)
+    drivebase.turn(-85)
     drivebase.straight(-200)
-    drivebase.turn(45)
-    drivebase.straight(650)
+    motorattachmentleft.run_angle(1000,-1000)
+    drivebase.straight(200)
+    drivebase.turn(40)
+    drivebase.straight(-700)
+    #drivebase.straight(400)
+    #drivebase.straight(-200)
+    #drivebase.turn(-40)
+   # drivebase.straight(-1000)
+    
     runindex += 1
 
 def run2() -> None:
