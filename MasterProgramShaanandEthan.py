@@ -18,6 +18,7 @@ motordriveleft = Motor(Port.A, Direction.COUNTERCLOCKWISE)
 motordriveright = Motor(Port.E)
 drivebase = DriveBase(motordriveleft, motordriveright, wheel_diameter = 56, axle_track = 80)
 drivebase.use_gyro(True)
+drivebase.heading_control.pid(3000,200,100,5,10)
 
 
 Attachment1 = motorattachmentleft
@@ -97,20 +98,19 @@ def run1() -> None:
     initrun(0)
 
     #motorattachmentleft.run_angle(1000,-2300)
-    drivebase.straight(695)
+    drivebase.straight(650)
     drivebase.turn(45)
     drivebase.straight(400)
     drivebase.straight(-100)
     drivebase.straight(300)
-    drivebase.straight(-270)
-    drivebase.turn(-85)
+    drivebase.straight(-220)
+    drivebase.turn(-83)
     drivebase.straight(-155)
     motorattachmentleft.run_angle(1000,-1000)
-    drivebase.straight(-50)
+    drivebase.straight(-70)
     motorattachmentleft.run_angle(1000,-1000)
-    drivebase.straight(220)
-    drivebase.turn(30)
-    drivebase.straight(-700)
+    drivebase.turn(-10)
+    drivebase.straight(-800)
     #drivebase.straight(400)
     #drivebase.straight(-200)
     #drivebase.turn(-40)
@@ -122,7 +122,7 @@ def run2() -> None:
     global runindex
 
     initrun(0)
-    
+    #motorattachmentright.run_angle(1000,1000)
     motorattachmentleft.run_angle(1000,-1000)
     drivebase.straight(300)
     drivebase.turn(-50)
@@ -133,25 +133,55 @@ def run2() -> None:
     drivebase.turn(90)
     drivebase.straight(200)
     drivebase.straight(-200)
-    drivebase.turn(179)
-    drivebase.straight(800)
-    drivebase.straight(-230)
-    motorattachmentright.run_target(200,500)
-    drivebase.turn(7)
-    drivebase.straight(240)
-    #drivebase.turn(10)
-    motorattachmentleft.run_target(1000,1000)
+    drivebase.turn(180)
+    drivebase.straight(372)
+    drivebase.turn(-6.5)
+    drivebase.straight(375)
+    drivebase.turn(-4)
+    drivebase.straight(-170)
+    drivebase.turn(-40)
+    motorattachmentright.run_angle(200,1000)
+    drivebase.turn(60)
+    drivebase.straight(180)
+    motorattachmentleft.run_target(1000,350)
+    drivebase.straight(10)
+    drivebase.straight(70)
     motorattachmentleft.run_angle(1000,-1000)
+    drivebase.turn(-10)
+    drivebase.straight(350)
+    drivebase.turn(-55)
+    drivebase.straight(700)
+    #drivebase.turn(7)
+    #drivebase.straight(240)
+    #drivebase.turn(10)
+    #motorattachmentleft.run_target(1000,1000)
+    #motorattachmentleft.run_angle(1000,-1000)
     #drivebase.turn(-10)
-    drivebase.straight(30)
-    drivebase.turn(7)
-    drivebase.straight(140)
-    drivebase.turn(-30)
-    drivebase.straight(400)
-    drivebase.turn(-50)
-    drivebase.straight(600)
+    #drivebase.straight(30)
+    #drivebase.turn(7)
+    #drivebase.straight(140)
+    #drivebase.turn(-30)
+    #drivebase.straight(400)
+    #drivebase.turn(-50)
+    #drivebase.straight(600)
     runindex += 1
 
+def run3() -> None:
+    global runindex
+
+    initrun(0)
+    
+    #motorattachmentleft.run_target(1000, 1000)
+    drivebase.straight(770)
+    drivebase.turn(-90)
+    drivebase.straight(160)
+    motorattachmentright.run_angle(250, -240)
+    drivebase.straight(250)
+    drivebase.turn(45)
+    drivebase.straight(125)
+    motorattachmentleft.run_target(1000, 2500)
+    drivebase.straight(-2000)
+    runindex += 1
 # ================================ Image bitmaps ================================
 
 digits = [
@@ -223,7 +253,8 @@ runindex: int = 0
 runs = [ # [Icon, Callback]
     [digits[1], run1],
     [digits[2], run2],
-    # More runs here ...
+    [digits[3], run3],
+   
 ]
 numruns: int = len(runs)
 
