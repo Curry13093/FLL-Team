@@ -53,7 +53,7 @@ def turnto(angle: Number) -> None:
 
     """
 
-    drivebase.turn(angle - hub.imu.heading())
+    turnto(angle - hub.imu.heading())
 
 def initrun(angle: Number) -> None:
     """Starts the run by ramming backward into the wall.
@@ -99,7 +99,7 @@ def catcherr(err: BaseException) -> bool:
 
 def run1() -> None:
     global runindex
-
+#RUN 1 - Pick up Samples, Krill, and Quadropus
     initrun(0)
 
     drivebase.straight(300)
@@ -117,7 +117,6 @@ def run1() -> None:
     drivebase.straight(370)
     turnto(255)
     drivebase.straight(300)
-    #drivebase.turn(-3)
     drivebase.straight(-40)
     turnto(210)
     drivebase.straight(-40)
@@ -137,7 +136,8 @@ def run1() -> None:
 
 def run2() -> None:
     global runindex
-
+#Run 2 Pick scuba, push rest of missions in.
+    
     initrun(0)
 
 
@@ -150,17 +150,17 @@ def run3() -> None:
     
     #motorattachmentleft.run_target(1000, 1000)
     drivebase.straight(770)
-    drivebase.turn(-90)
+    turnto(-90)
     drivebase.straight(170)
     motorattachmentright.run_angle(200, -260)
     drivebase.straight(220)
-    drivebase.turn(45)
+    turnto(45)
     drivebase.straight(140)
     motorattachmentleft.run_target(1000, 7000)
     drivebase.straight(-200)
-    ##drivebase.turn(-40)
+    ##turnto(-40)
     #drivebase.straight(-200)
-    #drivebase.turn(48)
+    #turnto(48)
     #drivebase.straight(-700)
     runindex += 1
 
@@ -172,14 +172,14 @@ def run4() -> None:
     
     motorattachmentleft.run_angle(100,-50)
     drivebase.straight(550)
-    drivebase.turn(93)
+    turnto(93)
     drivebase.straight(350)
     drivebase.straight(-60)
     motorattachmentleft.run_angle(80,-240)
     wait(1000)
     drivebase.straight(-170)
     motorattachmentleft.run_angle(100,300)
-    drivebase.turn(92)
+    turnto(92)
     drivebase.straight(2050)   
 
 def run5() -> None:
@@ -195,9 +195,9 @@ def run5() -> None:
     motorattachmentleft.run_angle(1000,200)
     drivebase.straight(-200)
     wait(5000)
-    drivebase.turn(-35)
+    turnto(-35)
     drivebase.straight(2000)
-    drivebase.turn(35)
+    turnto(35)
 
 def run6() -> None:
     global runindex
@@ -211,25 +211,27 @@ def run7() -> None:
 
     #motorattachmentleft.run_angle(1000,-2300)
     drivebase.straight(655)
-    drivebase.turn(45)
+    turnto(45)
     drivebase.straight(500)
     drivebase.straight(-100)
     drivebase.straight(500)
     drivebase.straight(-255)
-    drivebase.turn(-90)
+    turnto(-90)
   #  motorattachmentright.run_target(1000,1600)
     drivebase.straight(-135)
     motorattachmentright.run_angle(1000,-1000)
     drivebase.straight(-70)
     motorattachmentright.run_angle(1000,-1000)
-    drivebase.turn(40)
+    turnto(40)
     drivebase.straight(-800)
     #drivebase.straight(400)
     #drivebase.straight(-200)
-    #drivebase.turn(-40)
+    #turnto(-40)
    # drivebase.straight(-1000)
     
     runindex += 1
+def run8() -> None:
+    global runindex
 
 # ================================ Image bitmaps ================================
 
