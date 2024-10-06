@@ -5,11 +5,8 @@ from pybricks.parameters import Button, Color, Direction, Port, Side, Stop, Icon
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait, Matrix
 
-
 hub = InventorHub()
 hub.system.set_stop_button((Button.BLUETOOTH))
-
-
 
 # Robot configuration
 motorattachmentleft = Motor(Port.B)
@@ -17,12 +14,17 @@ motorattachmentright = Motor(Port.D)
 
 motordriveleft = Motor(Port.A, Direction.COUNTERCLOCKWISE)
 motordriveright = Motor(Port.E)
+print(motorattachmentleft.control.limits())
+motorattachmentleft.control.limits(1110, 10000, 190)
+print(motorattachmentright.control.limits())
+motorattachmentright.control.limits(1110, 10000, 190)
 drivebase = DriveBase(motordriveleft, motordriveright, wheel_diameter = 56, axle_track = 80)
-drivebase.use_gyro(False)
-wait(1)
 drivebase.use_gyro(True)
-drivebase.heading_control.pid(3000,200,100,5,10)
-
+print(drivebase.settings())
+drivebase.settings(400, 500, 300, 600) # straight_speed = 400, straight_acceleration = 500, turn_rate = 300, turn_acceleration = 600)
+print(drivebase.heading_control.pid())
+drivebase.heading_control.pid(30000, 100, 5300, 2, 10) # kp = 30000, ki = 100, kd = 5300, integral_deadzone = 2, integral_rate = 10, Don't change!
+#drivebase.heading_control.pid(3000,200,100,5,10)
 
 Attachment1 = motorattachmentleft
 Attachment2 = motorattachmentright
@@ -100,62 +102,45 @@ def run1() -> None:
 
     initrun(0)
 
-    #motorattachmentleft.run_angle(1000,-2300)
-    drivebase.straight(655)
-    drivebase.turn(45)
-    drivebase.straight(500)
+    drivebase.straight(300)
+    turnto(-45)
+    drivebase.straight(250)
+    drivebase.straight(-180)
+    turnto(0)
+    drivebase.straight(460)
+    turnto(30)
+    drivebase.straight(-40)
+    turnto(90)
+    drivebase.straight(100)
     drivebase.straight(-100)
-    drivebase.straight(500)
-    drivebase.straight(-255)
-    drivebase.turn(-90)
-  #  motorattachmentright.run_target(1000,1600)
-    drivebase.straight(-135)
-    motorattachmentright.run_angle(1000,-1000)
-    drivebase.straight(-70)
-    motorattachmentright.run_angle(1000,-1000)
-    drivebase.turn(40)
-    drivebase.straight(-800)
-    #drivebase.straight(400)
-    #drivebase.straight(-200)
-    #drivebase.turn(-40)
-   # drivebase.straight(-1000)
-    
+    turnto(280)
+    drivebase.straight(370)
+    turnto(255)
+    drivebase.straight(300)
+    #drivebase.turn(-3)
+    drivebase.straight(-40)
+    turnto(210)
+    drivebase.straight(-40)
+    motorattachmentleft.run_target(100, -230)
+    motorattachmentleft.run_target(1110, -600, wait = False)
+    drivebase.straight(-60)
+    turnto(270)
+    drivebase.straight(170)
+    motorattachmentright.run_target(1110, -800)
+    drivebase.straight(130)
+    motorattachmentright.run_target(1110, 0)
+    drivebase.straight(200)
+    turnto(230)
+    drivebase.straight(700)
+
     runindex += 1
 
 def run2() -> None:
     global runindex
 
     initrun(0)
-   
-    drivebase.turn(-50)
-    drivebase.straight(350)
-    drivebase.straight(-250)
-    drivebase.turn(50)
-    drivebase.straight(463)
-    drivebase.turn(45)
-    drivebase.straight(-50)
-    drivebase.turn(45)
-    drivebase.straight(200)
-    drivebase.straight(-200)
-    drivebase.turn(190)
-    drivebase.straight(372)
-    drivebase.turn(-17 )
-    drivebase.straight(320)
-    #drivebase.turn(-3)
-    drivebase.straight(-240)
-    drivebase.turn(-40)
-    motorattachmentleft.run_angle(100,-600)
-    drivebase.turn(57)
-    drivebase.straight(300)
-    motorattachmentright.run_angle(1700,-800)
-    #drivebase.straight(10)
-    drivebase.straight(120)
-    motorattachmentright.run_target(1000,200)
-    drivebase.turn(-40)
-    drivebase.straight(500)
-    drivebase.turn(-35)
-    drivebase.straight(100000)
-  
+
+
     runindex += 1
 
 def run3() -> None:
@@ -181,7 +166,10 @@ def run3() -> None:
 
 
 def run4() -> None:
-        
+    global runindex
+
+    initrun(0)
+    
     motorattachmentleft.run_angle(100,-50)
     drivebase.straight(550)
     drivebase.turn(93)
@@ -195,6 +183,10 @@ def run4() -> None:
     drivebase.straight(2050)   
 
 def run5() -> None:
+    global runindex
+
+    initrun(0)
+    
     drivebase.straight(200)
     motorattachmentleft.run_angle(1000,200)
     drivebase.straight(-75)
@@ -207,7 +199,37 @@ def run5() -> None:
     drivebase.straight(2000)
     drivebase.turn(35)
 
+def run6() -> None:
+    global runindex
 
+    initrun(0)
+
+def run7() -> None:
+    global runindex
+
+    initrun(0)
+
+    #motorattachmentleft.run_angle(1000,-2300)
+    drivebase.straight(655)
+    drivebase.turn(45)
+    drivebase.straight(500)
+    drivebase.straight(-100)
+    drivebase.straight(500)
+    drivebase.straight(-255)
+    drivebase.turn(-90)
+  #  motorattachmentright.run_target(1000,1600)
+    drivebase.straight(-135)
+    motorattachmentright.run_angle(1000,-1000)
+    drivebase.straight(-70)
+    motorattachmentright.run_angle(1000,-1000)
+    drivebase.turn(40)
+    drivebase.straight(-800)
+    #drivebase.straight(400)
+    #drivebase.straight(-200)
+    #drivebase.turn(-40)
+   # drivebase.straight(-1000)
+    
+    runindex += 1
 
 # ================================ Image bitmaps ================================
 
@@ -283,6 +305,8 @@ runs = [ # [Icon, Callback]
     [digits[3], run3],
     [digits[4], run4],
     [digits[5], run5],
+    [digits[6], run6],
+    [digits[7], run7],
 ]
 numruns: int = len(runs)
 
