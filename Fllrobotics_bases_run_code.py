@@ -194,15 +194,14 @@ def run5() -> None:
     drivebase.straight(-100)
     motorattachmentleft.run_angle(1000,200)
     drivebase.straight(-200)
-    wait(5000)
-    turnto(-35)
-    drivebase.straight(2000)
-    turnto(35)
+   
 
 def run6() -> None:
     global runindex
-
-    initrun(0)
+    intitrun(0)
+    turnto(-35)
+    drivebase.straight(2000)
+    turnto(35)
 
 def run7() -> None:
     global runindex
